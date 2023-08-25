@@ -12,12 +12,7 @@ public class CurrencyConverter {
   CurrencyToConvertInputEntity input = null;
   Converter converter;
 
-//  private static Logger log = LoggerFactory.getLogger(CurrencyConverter.class);
   public CurrencyConverter(String[] args, String baseCurrency) {
-//    log.info("Start");
-//    log.error("Error");
-//    log.info("Configuration File Defined To Be :: "+System.getProperty("log4j.configurationFile"));
-
     this.baseCurrency = baseCurrency;
     if (validateInput(args)) {
         this.input = parseInput(args);
