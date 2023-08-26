@@ -1,4 +1,4 @@
-package com.dpa;
+package com.dla;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,8 +7,8 @@ import java.util.*;
 
 public class CurrencyConverterConfig {
 
-  public HashMap initialiseCurrencies(String baseCurrency) {
-    HashMap currencies = new HashMap<String, CurrencyToConvertEntity>();
+  public HashMap<String, CurrencyToConvertEntity> initialiseCurrencies(String baseCurrency) {
+    HashMap<String, CurrencyToConvertEntity> currencies = new HashMap<>();
     String fileName = "currencies_" + baseCurrency.toLowerCase() + ".csv";
     Optional<InputStream> currenciesInputStream = getConfigFileInputStream(fileName);
 
@@ -29,20 +29,16 @@ public class CurrencyConverterConfig {
 
     Optional<InputStream> currenciesInputStream;
     try {
-      return Optional.ofNullable(new FileInputStream(System.getProperty("user.dir") + "/" + fileName));
+      return Optional.of(new FileInputStream(System.getProperty("user.dir") + "/" + fileName));
     } catch (FileNotFoundException e){
-      currenciesInputStream =  Optional.empty();
-    }
-
-    if (!currenciesInputStream.isPresent()){
       ClassLoader classloader = Thread.currentThread().getContextClassLoader();
       currenciesInputStream = Optional.ofNullable(classloader.getResourceAsStream(fileName));
     }
     return currenciesInputStream;
-  };
+  }
 
   private CurrencyToConvertEntity getCurrencyFromLine(String line) {
-    List<String> rowValues = new ArrayList<String>();
+    List<String> rowValues = new ArrayList<>();
     try (Scanner rowScanner = new Scanner(line)) {
       rowScanner.useDelimiter(",");
       while (rowScanner.hasNext()) {
@@ -51,12 +47,11 @@ public class CurrencyConverterConfig {
     }
 
     try {
-      CurrencyToConvertEntity currencyToConvertEntity = new CurrencyToConvertEntity(
+      return new CurrencyToConvertEntity(
         rowValues.get(0),
         rowValues.get(1),
         Currency.getInstance(rowValues.get(2)),
         Double.parseDouble(rowValues.get(3)));
-      return currencyToConvertEntity;
     } catch (IllegalArgumentException e) {
       throw new RuntimeException(String.format("Failure in file format while parsing data:  %s ", line), e);
     }

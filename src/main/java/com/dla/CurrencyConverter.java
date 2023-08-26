@@ -1,15 +1,15 @@
-package com.dpa;
+package com.dla;
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 
-import com.dpa.converter.Converter;
+import com.dla.converter.Converter;
 
 import java.security.InvalidParameterException;
 import java.util.*;
 
 public class CurrencyConverter {
-  String baseCurrency = null;
+  String baseCurrency;
   CurrencyToConvertInputEntity input = null;
   Converter converter;
 

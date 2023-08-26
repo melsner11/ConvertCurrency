@@ -1,6 +1,6 @@
-package com.dpa;
+package com.dla;
 
-import com.dpa.converter.Converter;
+import com.dla.converter.Converter;
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
 
@@ -12,19 +12,14 @@ public class ConverterServiceFactory {
 
   private static final Map<String, String> serviceCache = new HashMap<>();
 
-  public ConverterServiceFactory() {
-    initServiceCache();
-  }
-
   /**
    * Load/Initialise available converters - a valid name for a converter would be EURCurrencyConverter.
    * So currency the converter is based on plus the "CurrencyConverter"
    */
   private static void initServiceCache() {
     if (serviceCache.isEmpty()) {
-      Reflections reflections = new Reflections("com.dpa", new SubTypesScanner(false));
+      Reflections reflections = new Reflections("com.dla", new SubTypesScanner(false));
       reflections.getSubTypesOf(Converter.class)
-        .stream()
         .forEach(converter -> {
           try {
             String currencyCodeAsKey = getCurrencyCodeFromClassName(converter.getCanonicalName());

@@ -1,33 +1,25 @@
-package com.dpa;
+package com.dla;
 
-import com.dpa.converter.Converter;
-import com.dpa.converter.GBPCurrencyConverter;
+import com.dla.converter.Converter;
+import com.dla.converter.GBPCurrencyConverter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ConverterServiceFactoryTest {
-  ConverterServiceFactory converterServiceFactory;
-
-  @Test
-  void testInitFactoryDoesNotThrow() {
-    Assertions.assertDoesNotThrow(() -> {
-      converterServiceFactory = new ConverterServiceFactory();
-    });
-  }
 
   @Test
   void testGetConverter() {
-    Converter result = converterServiceFactory.getConverter("GBP");
+    Converter result = ConverterServiceFactory.getConverter("GBP");
     assertTrue(result.getClass().isInstance(new GBPCurrencyConverter()));
   }
 
   @Test
   void testGetConverterThrows() {
-    Exception exception =  Assertions.assertThrows( RuntimeException.class, () -> {
-      converterServiceFactory.getConverter("OTHER");
-    });
+    Exception exception =  Assertions.assertThrows( RuntimeException.class, () ->
+      ConverterServiceFactory.getConverter("OTHER")
+    );
     assertTrue(exception.getMessage().contains("Failure while initialising converter.  No converter found that handles base currency: [OTHER]."));
   }
 }

@@ -1,8 +1,8 @@
-package com.dpa.converter;
+package com.dla.converter;
 
-import com.dpa.CurrencyConverterConfig;
-import com.dpa.CurrencyConverterResult;
-import com.dpa.CurrencyToConvertEntity;
+import com.dla.CurrencyConverterConfig;
+import com.dla.CurrencyConverterResult;
+import com.dla.CurrencyToConvertEntity;
 
 import java.util.Currency;
 import java.util.HashMap;
@@ -10,11 +10,11 @@ import java.util.HashMap;
 public class BaseConverter implements Converter {
   protected String base;
   protected HashMap<String, CurrencyToConvertEntity> currencies;
-  private CurrencyConverterConfig currencyConverterConfig;
+
 
   public BaseConverter(String base) {
     this.base = base;
-    this.currencyConverterConfig = new CurrencyConverterConfig();
+    CurrencyConverterConfig currencyConverterConfig = new CurrencyConverterConfig();
     this.currencies = currencyConverterConfig.initialiseCurrencies(base);
   }
 

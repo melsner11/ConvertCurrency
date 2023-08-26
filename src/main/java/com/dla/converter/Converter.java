@@ -1,9 +1,8 @@
-package com.dpa.converter;
+package com.dla.converter;
 
-import com.dpa.CurrencyConverterResult;
+import com.dla.CurrencyConverterResult;
 
 import java.util.Currency;
-import java.util.HashMap;
 
 public interface Converter {
   CurrencyConverterResult convert(double value, Currency sourceCurrency, Currency targetCurrency);

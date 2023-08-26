@@ -1,4 +1,4 @@
-package com.dpa;
+package com.dla;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -15,25 +15,25 @@ class CurrencyConverterConfigTest {
   }
   @Test
   void testInitialiseCurrenciesThrows() {
-    Exception exception = Assertions.assertThrows(RuntimeException.class, () -> {
-      currencyConverterConfig.initialiseCurrencies("OTHER");
-    });
+    Exception exception = Assertions.assertThrows(RuntimeException.class, () ->
+      currencyConverterConfig.initialiseCurrencies("OTHER")
+    );
     Assertions.assertTrue(exception.getMessage().contains("Error while reading config file for converter from base:"));
   }
 
   @Test
   void testInitialiseCurrenciesWithWrongCurrencyCodeInConfigFileThrows() {
-    Exception exception = Assertions.assertThrows(RuntimeException.class, () -> {
-      currencyConverterConfig.initialiseCurrencies("fortest1");
-    });
+    Exception exception = Assertions.assertThrows(RuntimeException.class, () ->
+      currencyConverterConfig.initialiseCurrencies("fortest1")
+    );
     Assertions.assertTrue(exception.getMessage().contains("Failure in file format while parsing data:"));
   }
 
   @Test
   void testInitialiseCurrenciesWithWrongRateValueInConfigFileThrows() {
-    Exception exception = Assertions.assertThrows(RuntimeException.class, () -> {
-      currencyConverterConfig.initialiseCurrencies("fortest2");
-    });
+    Exception exception = Assertions.assertThrows(RuntimeException.class, () ->
+      currencyConverterConfig.initialiseCurrencies("fortest2")
+    );
     Assertions.assertTrue(exception.getMessage().contains("Failure in file format while parsing data:"));
   }
 

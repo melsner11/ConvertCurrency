@@ -1,4 +1,4 @@
-package com.dpa;
+package com.dla;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -19,10 +19,10 @@ public class ConvertCurrency {
 //      CurrencyConverter currencyConverter = new CurrencyConverter(new String[]{"34.56", "AED"}, "GBP");
 
       CurrencyConverterResult result = currencyConverter.convert();
-      System.out.println(String.format("%s %s, (%s) "
+      System.out.printf("%s %s, (%s) %n"
         , formatRoundedUpAndTwoDigits.format(result.getValue())
         , result.getCurrencyEntity().getName()
-        , result.getCurrencyEntity().getCountry()));
+        , result.getCurrencyEntity().getCountry());
 
     } catch (Exception e) {
       System.err.println(e.getMessage());

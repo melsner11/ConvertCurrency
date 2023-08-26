@@ -1,14 +1,14 @@
-package com.dpa.converter;
+package com.dla.converter;
 
-import com.dpa.CurrencyConverterResult;
-import com.dpa.CurrencyToConvertEntity;
+import com.dla.CurrencyConverterResult;
+import com.dla.CurrencyToConvertEntity;
 
 import java.util.Currency;
 
-public class GBPCurrencyConverter extends BaseConverter implements Converter {
+public class EURCurrencyConverter extends BaseConverter implements Converter {
 
-  public GBPCurrencyConverter() {
-    super("GBP");
+  public EURCurrencyConverter() {
+    super("EUR");
   }
 
   @Override
@@ -22,3 +22,5 @@ public class GBPCurrencyConverter extends BaseConverter implements Converter {
     return result;
   }
 }
+
+

@@ -3,7 +3,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
-group 'com.dpa'
+group 'com.dla'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -13,7 +13,7 @@ repositories {
 shadowJar{
     manifest {
         attributes(
-                'Main-Class': 'com.dpa.ConvertCurrency'
+                'Main-Class': 'com.dla.ConvertCurrency'
         )
     }
 

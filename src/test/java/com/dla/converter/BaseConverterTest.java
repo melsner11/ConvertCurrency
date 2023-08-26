@@ -1,7 +1,6 @@
-package com.dpa.converter;
+package com.dla.converter;
 
-import com.dpa.CurrencyConverterResult;
-import com.dpa.converter.BaseConverter;
+import com.dla.CurrencyConverterResult;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +14,7 @@ class BaseConverterTest {
     BaseConverter baseConverter  = new BaseConverter("GBP");
     CurrencyConverterResult result = baseConverter.convert(1.23, Currency.getInstance("AED"),  Currency.getInstance("AUD"));
     Assertions.assertNull(result.getCurrencyEntity());
-    Assertions.assertTrue(result.getValue() == 0);
+    Assertions.assertEquals(0,result.getValue());
   }
 
   @Test
