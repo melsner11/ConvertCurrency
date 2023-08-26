@@ -1,37 +1,22 @@
 package com.dla;
 
-import com.dla.converter.Converter;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
-import static org.mockito.Mockito.*;
 
 class CurrencyConverterTest {
-  @Mock
-  CurrencyToConvertInputEntity input;
-  @Mock
-  Converter converter;
-  @InjectMocks
-  CurrencyConverter currencyConverter;
-
-  @BeforeEach
-  void setUp() {
-    MockitoAnnotations.openMocks(this);
-  }
 
   @Test
   void testConvert() {
-    when(input.getValue()).thenReturn(Double.valueOf(0));
-    when(input.getSourceCurrency()).thenReturn(null);
-    when(input.getTargetCurrency()).thenReturn(null);
-    when(converter.convert(anyDouble(), any(), any())).thenReturn(new CurrencyConverterResult());
-
+    CurrencyConverter currencyConverter = new CurrencyConverter(new String[]{"10","AED", "AUD" },"GBP");
     CurrencyConverterResult result = currencyConverter.convert();
-    Assertions.assertEquals(new CurrencyConverterResult(), result);
+    Assertions.assertEquals(47.675533427224465, result.getValue());
+  }
+  @Test
+  void testConvertThrows() {
+    Exception e = Assertions.assertThrows(RuntimeException.class, ()->
+      new CurrencyConverter(new String[]{"10","AE", "AUD" },"GBP")
+    );
+    Assertions.assertTrue(e.getMessage().contains("Wrong parameter length. Code for source currency has to be 3 letters but has: [2]"));
   }
 }
 
