@@ -12,16 +12,17 @@ public class CurrencyConverterConfig {
     String fileName = "currencies_" + baseCurrency.toLowerCase() + ".csv";
     Optional<InputStream> currenciesInputStream = getConfigFileInputStream(fileName);
 
-    try (Scanner scanner = new Scanner(currenciesInputStream.get())) {
+    if (currenciesInputStream.isPresent()) {
+      Scanner scanner = new Scanner(currenciesInputStream.get());
       while (scanner.hasNextLine()) {
         CurrencyToConvertEntity entity = getCurrencyFromLine(scanner.nextLine());
         currencies.put(entity.code.toString(), entity);
 
       }
-    } catch (Exception e) {
-      throw new RuntimeException(String.format("Error while reading config file for converter from base: [%s]. Did not find expected file: [%s] in classpath or resources folder.", baseCurrency, fileName), e);
+      return currencies;
     }
-    return currencies;
+    throw new RuntimeException(String.format("Error while reading config file for converter from base: [%s]. Did not find expected file: [%s] in classpath or resources folder.", baseCurrency, fileName));
+
   }
 
   private Optional<InputStream> getConfigFileInputStream(String fileName){
@@ -54,7 +55,7 @@ public class CurrencyConverterConfig {
         rowValues.get(0),
         rowValues.get(1),
         Currency.getInstance(rowValues.get(2)),
-        Float.parseFloat(rowValues.get(3)));
+        Double.parseDouble(rowValues.get(3)));
       return currencyToConvertEntity;
     } catch (IllegalArgumentException e) {
       throw new RuntimeException(String.format("Failure in file format while parsing data:  %s ", line), e);

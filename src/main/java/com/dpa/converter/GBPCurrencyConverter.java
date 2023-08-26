@@ -1,7 +1,5 @@
 package com.dpa.converter;
 
-import com.dpa.BaseConverter;
-import com.dpa.Converter;
 import com.dpa.CurrencyConverterResult;
 import com.dpa.CurrencyToConvertEntity;
 

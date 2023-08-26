@@ -1,4 +1,6 @@
-package com.dpa;
+package com.dpa.converter;
+
+import com.dpa.CurrencyConverterResult;
 
 import java.util.Currency;
 import java.util.HashMap;

@@ -1,9 +1,13 @@
-package com.dpa;
+package com.dpa.converter;
+
+import com.dpa.CurrencyConverterConfig;
+import com.dpa.CurrencyConverterResult;
+import com.dpa.CurrencyToConvertEntity;
 
 import java.util.Currency;
 import java.util.HashMap;
 
-public class BaseConverter implements Converter{
+public class BaseConverter implements Converter {
   protected String base;
   protected HashMap<String, CurrencyToConvertEntity> currencies;
   private CurrencyConverterConfig currencyConverterConfig;
