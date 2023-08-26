@@ -1,4 +1,4 @@
-package com.dla;
+package com.dla.model;
 
 import lombok.Getter;
 

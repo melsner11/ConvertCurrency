@@ -1,8 +1,8 @@
 package com.dla.converter;
 
 import com.dla.CurrencyConverterConfig;
-import com.dla.CurrencyConverterResult;
-import com.dla.CurrencyToConvertEntity;
+import com.dla.model.CurrencyConverterResult;
+import com.dla.model.CurrencyToConvertEntity;
 
 import java.util.Currency;
 import java.util.HashMap;

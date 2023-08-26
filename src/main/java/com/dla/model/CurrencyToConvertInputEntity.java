@@ -1,4 +1,4 @@
-package com.dla;
+package com.dla.model;
 
 import java.util.Currency;
 

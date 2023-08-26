@@ -1,5 +1,7 @@
 package com.dla;
 
+import com.dla.model.CurrencyConverterResult;
+
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 

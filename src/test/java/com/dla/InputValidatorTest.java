@@ -1,5 +1,6 @@
 package com.dla;
 
+import com.dla.model.CurrencyToConvertInputEntity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

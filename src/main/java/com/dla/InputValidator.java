@@ -1,5 +1,7 @@
 package com.dla;
 
+import com.dla.model.CurrencyToConvertInputEntity;
+
 import java.security.InvalidParameterException;
 import java.util.Currency;
 import java.util.Optional;

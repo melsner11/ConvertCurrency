@@ -1,5 +1,7 @@
 package com.dla;
 
+import com.dla.model.CurrencyToConvertEntity;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -16,7 +18,7 @@ public class CurrencyConverterConfig {
       Scanner scanner = new Scanner(currenciesInputStream.get());
       while (scanner.hasNextLine()) {
         CurrencyToConvertEntity entity = getCurrencyFromLine(scanner.nextLine());
-        currencies.put(entity.code.toString(), entity);
+        currencies.put(entity.getCode().toString(), entity);
 
       }
       return currencies;
